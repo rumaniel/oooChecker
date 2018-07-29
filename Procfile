@@ -1,1 +1,1 @@
-web: gunicorn OOOMe:app
+web: gunicorn oooChecker:app
