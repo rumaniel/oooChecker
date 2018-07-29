@@ -12,7 +12,7 @@ def IsRequestValid(request):
 
     return isTokenValid and isTeamIdValid
 
-def GetChanellHistory(responseUrl):
+def GetChanellHistory(responseUrl, userId):
     oooHistoryString = ""
     BOT_TOKKEN = os.environ.get('BOT_TOKEN')
     OOO_CHANNEL_ID = os.environ.get('OOO_CHANNEL_ID')
@@ -72,7 +72,7 @@ def OOOMe():
     if not IsRequestValid(request):
         abort(400)
 
-    GetChanellHistory(request.form['response_url'])
+    GetChanellHistory(request.form['response_url'], request.form['user_id'])
 
     return jsonify(response_type='ephemeral', text="Check %s's ooo history:fast_parrot:" % request.form['user_name'])   
 
