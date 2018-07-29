@@ -4,6 +4,7 @@ url = "https://pypi.python.org/simple"
 [packages]
 flask = "*"
 requests = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.6"
