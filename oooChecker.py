@@ -74,10 +74,6 @@ def OOOMe():
 
     GetChanellHistory(request.form['response_url'])
 
-    return jsonify
-    (
-        response_type='ephemeral',
-        text="Check %s's ooo history:fast_parrot:" % request.form['user_name'],
-    )   
+    return jsonify(response_type='ephemeral', text="Check %s's ooo history:fast_parrot:" % request.form['user_name'])   
 
 # ooo channel id C4DRJAA0Y
