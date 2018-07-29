@@ -1,1 +1,1 @@
-web: FLASK_APP=oooChecker.py flask run
+web: gunicorn OOOMe:app
