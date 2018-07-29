@@ -67,7 +67,7 @@ def SendMessageToSlack(attachment, url):
     result = requests.post(url, data=payloadResult, headers=headers)
     print(result.text)
 
-@app.route('/ooome', methods=['POST'])
+@app.route('/', methods=['POST'])
 def OOOMe():
     if not IsRequestValid(request):
         abort(400)
