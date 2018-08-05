@@ -70,6 +70,11 @@ def SendMessageToSlack(attachment, url):
     result = requests.post(url, data=payloadResult, headers=headers)
     print(result.text)
 
+def QueingJob():
+    q = Queue(connection=conn)
+    result = q.enqueue(GetChanellHistory, request.form['response_url'], request.form['user_id'])
+    print(result)
+
 @app.route('/', methods=['POST'])
 def OOOMe():
     if not IsRequestValid(request):
@@ -79,10 +84,5 @@ def OOOMe():
     QueingJob()
 
     return jsonify(response_type='ephemeral', text="Check %s's ooo history:fast_parrot:" % request.form['user_name'])   
-
-def QueingJob():
-    q = Queue(connection=conn)
-    result = q.enqueue(GetChanellHistory, request.form['response_url'], request.form['user_id'])
-    print(result)
 
 # ooo channel id C4DRJAA0Y
