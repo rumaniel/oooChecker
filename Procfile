@@ -1,2 +1,2 @@
 web: gunicorn oooChecker:app 
-worker: python oooWoker.py
+worker: python oooWorker.py
