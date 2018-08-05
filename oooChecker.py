@@ -3,6 +3,9 @@ import requests
 import json
 import base64
 from flask import abort, Flask, jsonify, request
+from rq import Queue
+from worker import conn
+
 
 app = Flask(__name__)
 
@@ -72,8 +75,14 @@ def OOOMe():
     if not IsRequestValid(request):
         abort(400)
 
-    GetChanellHistory(request.form['response_url'], request.form['user_id'])
+    # GetChanellHistory(request.form['response_url'], request.form['user_id'])
+    QueingJob()
 
     return jsonify(response_type='ephemeral', text="Check %s's ooo history:fast_parrot:" % request.form['user_name'])   
+
+def QueingJob():
+    q = Queue(connection=conn)
+    result = q.enqueue(GetChanellHistory, request.form['response_url'], request.form['user_id'])
+    print(result)
 
 # ooo channel id C4DRJAA0Y
