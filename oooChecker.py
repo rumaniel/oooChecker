@@ -4,7 +4,7 @@ import json
 import base64
 from flask import abort, Flask, jsonify, request
 from rq import Queue
-from worker import conn
+from oooWorker import conn
 
 
 app = Flask(__name__)
